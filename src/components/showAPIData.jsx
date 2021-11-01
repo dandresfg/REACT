@@ -1,18 +1,23 @@
 import React from 'react';
-import APIdata from './api.jsx'
+import axios from 'axios';
 
-function ShowAPI() {
-  const [data, setData] = React.useState([]);
+const baseURL = "http://34.227.3.72:4000/api/public/result_award/get_last_result";
 
-  React.useEffect(() => {
-    APIdata().then(res => {
-      setData(res.data);
+export default function showAPIData(){
+  const [draw, setDraw] = useState(null);
+
+  useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setDraw(response.data);
     });
   }, []);
 
-  return (
-    <a>{JSON.stringify(data.draw.fecha_juega, null, 2)}</a>
-  );
-}
+  if (!draw) return null;
 
-export default ShowAPI;
+    return(
+      <div>
+        <h1>{draw.draws.id}</h1>
+        <p>{draw.prev_draws[0]}</p>
+      </div>
+    ); 
+}
