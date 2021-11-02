@@ -1,13 +1,13 @@
 import React from 'react';
-import showAPIData from './showAPIData.jsx'
+import ShowAPIData from './showAPIData.jsx'
 
 
-function actualDraw(props){
-  console.log(props)
-    return(
-        <p className="textStyle">Sorteo: {props.actualDraw}</p>
-    );
-}
+//function actualDraw(props){
+  //console.log(props)
+    //return(
+      //  <p className="textStyle">Sorteo: {props.actualDraw}</p>
+    //);
+//}
 
 function nDraw(props){
     return(
@@ -35,7 +35,7 @@ function DrawsList(){
         <div className="container-xl">
             <div className="row g-0">
                 <div className="d-flex col-md-2 col-6">
-                    <showAPIData />
+                    <ShowAPIData />
                 </div>
                 <div className="d-flex col-md-5 col-6 justify-content-end">
                     <nDraw/>
