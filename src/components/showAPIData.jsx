@@ -1,25 +1,36 @@
 import React from 'react';
 import axios from 'axios';
 
-const baseURL = "http://34.227.3.72:4000/api/public/result_award/get_last_result?date=2021-04-07";
+const client = axios.create({
+  baseURL: "http://34.227.3.72:4000/api/public/result_award/get_last_result?"
+});
 
 export default function ShowAPIData(){
   const [draw, setDraw] = React.useState(null);
   const [error, setError] = React.useState(null);
-
-  React.useEffect(() => {
-    axios.get(`${baseURL}/asdf`).then((response) => {
+  
+  React.useEffect(()=>{
+    async function getDraws(){
+      const response = await client.get("/1");
       setDraw(response.data);
-    }).catch(error=>{
-      setError(error);
-    });
+    }
+    getDraws();
   }, []);
 
-  if (error) return `Error: ${error.message}`;
+  async function postDate() {
+    await client.post("/1");
+    alert("modificado")
+    setDraw(null);
+  }
+
   if(!draw) return "Error trying to get date"
 
   console.log(draw)
     return(
-      <h1>a</h1>
+    <div>
+      <h1>{draw.title}</h1>
+      <p>{draw.body}</p>
+      <button onClick={postDate}>Post</button>
+    </div>
     ); 
 }
