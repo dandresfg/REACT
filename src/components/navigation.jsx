@@ -1,13 +1,19 @@
 import React from 'react';
 import TuQuintico from '../resources/head/Group-1.png';
 
-function NavLinks(props){
-    return(
-        <li className="nav-item">
-            <a className="nav-link text-white" aria-current="page" href={props.href}>{props.text}</a>
-        </li>
-    );
-}
+const routes = [
+    {href: '/', text:"Inicio"},
+    {href: '/', text:"Ticket Personalizado"},
+    {href: '/', text:"Formas de pago"},
+    {href: '/', text:"Contáctanos"},
+    {href: '/', text:"Consulta de ticket"}
+]
+
+const NavLink = ({ href, text }) => (
+    <li className="nav-item">
+        <a className="nav-link text-white" aria-current="page" href={href}>{text}</a>
+    </li>
+)
 
 function Navigation(){
     return(
@@ -21,11 +27,7 @@ function Navigation(){
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <ul className="navbar-nav">
-                        <NavLinks href="/" text="Inicio"/>
-                        <NavLinks href="/" text="Ticket Personalizado"/>
-                        <NavLinks href="/" text="Formas de pago"/>
-                        <NavLinks href="/" text="Contáctanos"/>
-                        <NavLinks href="/" text="Consulta de ticket"/>
+                        {routes.map(route => <NavLink {...route} key={route.text} />)}
                     </ul>
                 </div>
             </div>

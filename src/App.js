@@ -4,7 +4,15 @@ import SortBanner from './components/banner.jsx'
 
 function App() {
   return(
+<<<<<<< Updated upstream
     <><Navigation /><SortBanner /></>
+=======
+    <>
+      <Navigation />
+      <SortBanner />
+      <DrawsList /> 
+    </>
+>>>>>>> Stashed changes
   );
 }
 
